@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="./Images/drizzle.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #222;
+            margin-top: -20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 470px;
+            background: linear-gradient(135deg, #350068, #ff6978);
+            color: #fff;
+            margin: 100px auto 0;
+            border-radius: 20px;
+            text-align: center;
+            padding: 40px 35px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            width: 100%;
+            background: #ebfffc;
+            border-radius: 30px;
+        }
+
+        .search input {
+            border: 0;
+            outline: 0;
+            background: #ebfffc;
+            color: #555;
+            border-radius: 30px;
+            font-size: 18px;
+            flex: 1;
+            padding: 10px 25px;
+            height: 60px;
+        }
+
+        .search button {
+            border: 0;
+            outline: 0;
+            padding: 10px 25px;
+            margin: 3px;
+            height: 60px;
+            border-radius: 30px;
+            background: #f4d1ff;
+            cursor: pointer;
+        }
+
+        .search button img {
+            width: 30px;
+            margin-top: 6px;
+        }
+
+        /* Weather */
+        .weather-icon {
+            width: 190px;
+            margin-top: 20px;
+        }
+
+        .weather h1 {
+            font-size: 70px;
+            font-weight: 600;
+        }
+
+        .weather h2 {
+            font-size: 40px;
+            font-weight: 500;
+            margin-top: -10px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding: 0 30px;
+        }
+
+        .col {
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+
+        .col img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .humidity,
+        .wind {
+            font-size: 28px;
+            margin-top: -6px;
+        }
+
+        .weather {
+            display: none;
+        }
+
+        /* For mobile phones and small screens: */
+        @media only screen and (max-width: 600px) {
+            body {
+                padding: 0 20px;
+
+            }
+
+            .container {
+                width: 100%;
+                border-radius: 20px;
+            }
+
+            .search {
+                border-radius: 25px;
+            }
+
+            .search input {
+                font-size: 16px;
+                height: 50px;
+                /* width: 700px; */
+            }
+
+            .search button {
+                padding: 10px 10px;
+                margin-right: 5px;
+                height: 50px;
+            }
+
+            .weather {
+                padding: 20px 15px;
+            }
+
+            .weather h1 {
+                font-size: 50px;
+            }
+
+            .weather h2 {
+                font-size: 30px;
+            }
+
+            .weather-icon {
+                width: 150px;
+            }
+
+            .details {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            .col {
+                margin-bottom: 15px;
+            }
+
+            .col img {
+                width: 30px;
+            }
+
+            .humidity,
+            .wind {
+                font-size: 20px;
+            }
+        }
+
+        /* For tablets: */
+        @media only screen and (min-width: 601px) and (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+
+            .search input {
+                font-size: 18px;
+                height: 55px;
+            }
+
+            .search button {
+                padding: 10px 20px;
+                height: 55px;
+            }
+
+            .weather {
+                padding: 40px 35px;
+            }
+
+            .weather h1 {
+                font-size: 60px;
+            }
+
+            .weather h2 {
+                font-size: 35px;
+            }
+
+            .weather-icon {
+                width: 170px;
+            }
+
+            .details {
+                margin-top: 30px;
+            }
+
+            .col {
+                margin-bottom: 20px;
+            }
+
+            .col img {
+                width: 35px;
+            }
+
+            .humidity,
+            .wind {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search">
+            <input type="text" placeholder="enter City Name" spellcheck="false" id="inp">
+            <button><img src="bx-search.svg" alt=""></button>
+        </div>
+        <div class="weather">
+            <img src="drizzle.png" alt="rain" class="weather-icon">
+            <h1 class="temp">25°c</h1>
+            <h2 class="city">New York City</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="humidity.png" alt="">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="wind.png" alt="">
+                    <div>
+                        <p class="wind">18km/h</p>
+                        <p>Wind</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const apiKey = 'aaeeefe0ab717667e3309e9671822663';
+        const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
+
+        // console.log(apiURL);
+
+        const searchBox = document.querySelector('.search input');
+        const searchBtn = document.querySelector('.search button');
+        const weatherIcon = document.querySelector('.weather-icon')
+
+        async function myWeather(city) {
+            const response = await fetch(apiURL + city + `&appid=${apiKey}`)
+            if (response.status == 404) {
+                alert('Invalid city Name !')
+                document.querySelector('#inp').value = " "
+            }
+            else {
+                var data = await response.json();
+                console.log(data);
+
+                document.querySelector('.city').innerHTML = data.name
+                document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + '°c'
+                document.querySelector('.humidity').innerHTML = data.main.humidity + '%'
+                document.querySelector('.wind').innerHTML = data.wind.speed + 'km/h'
+
+                if (data.weather[0].main == 'Clouds') {
+                    weatherIcon.src = 'clouds.png'
+                }
+                else if (data.weather[0].main == 'Clear') {
+                    weatherIcon.src = 'clear.png'
+                }
+                else if (data.weather[0].main == 'Rain') {
+                    weatherIcon.src = 'rain.png'
+                }
+                else if (data.weather[0].main == 'Drizzle') {
+                    weatherIcon.src = 'drizzle.png'
+                }
+                else if (data.weather[0].main == 'Snow') {
+                    weatherIcon.src = 'snow.png'
+                }
+                else if (data.weather[0].main == 'Mist') {
+                    weatherIcon.src = 'mist.png'
+                }
+                document.querySelector('.weather').style.display = 'block'
+                document.querySelector('#inp').value = " "
+            }
+        }
+        searchBtn.addEventListener('click', () => {
+            myWeather(searchBox.value);
+        })
+    </script>
+</body>
+
+</html>
